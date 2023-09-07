@@ -1,0 +1,47 @@
+server:
+  port: 9006
+
+spring:
+  application:
+    name: user-service
+  cloud:
+    alicloud:
+      access-key: LTAI5tJ5EAZB75AgAQUKnmYn
+      secret-key: bT6wGMgVf3GDv6pV7nCgcDE62PBkPa
+
+  datasource:
+    url: jdbc:mysql://192.168.200.128:3306/lkd_user?useUnicode=true&autoReconnect=true&autoReconnectForPools=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root123
+
+mqtt:
+  client:
+    username: admin
+    password: public
+    serverURI: tcp://192.168.200.128:1883
+    clientId: monitor.user${random.int[1000,9999]}
+    keepAliveInterval: 10
+    connectionTimeout: 30
+  producer:
+    defaultQos: 2
+    defaultRetained: false
+    defaultTopic: topic/test1
+  consumer:
+    consumerTopics:
+
+sms:
+  operator:
+    signName: 立可得
+    templateCode: SMS_202816312
+
+xxl:
+  job:
+    accessToken:
+    admin:
+      addresses: http://192.168.200.128:8080/xxl-job-admin
+    executor:
+      appname: user-service
+      address:
+      ip:
+      port: 9983
+      logretentiondays: 30
